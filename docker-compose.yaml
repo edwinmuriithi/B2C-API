@@ -12,7 +12,7 @@ services:
       - zookeeper
 
   zookeeper:
-    image: wurstmeister/zookeeper:3.4.14
+    image: bitnami/zookeeper:3.8.0
     ports:
       - "2181:2181"
 
