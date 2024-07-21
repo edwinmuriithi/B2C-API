@@ -28,4 +28,11 @@ public class B2CController {
         Result result = b2CService.fetchPaymentStatus(id);
         return ResponseEntity.ok(result);
     }
+
+    @PostMapping("/update-status")
+    public ResponseEntity<String> updatePaymentStatus(@Valid @RequestBody Result result) {
+        b2CService.updatePaymentStatus(result);
+        return ResponseEntity.ok("Payment status updated");
+    }
+
 }

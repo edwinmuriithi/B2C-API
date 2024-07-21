@@ -33,4 +33,10 @@ public class B2CService {
         result.setStatus(gwRequest.getStatus());
         return result;
     }
+
+    public void updatePaymentStatus(Result result) {
+        GwRequests gwRequest = gwRequestRepository.findById(result.getId()).orElseThrow();
+        gwRequest.setStatus(result.getStatus());
+        gwRequestRepository.save(gwRequest);
+    }
 }
