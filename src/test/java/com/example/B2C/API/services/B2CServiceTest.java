@@ -34,15 +34,12 @@ class B2CServiceTest {
 
     @Test
     void processB2CRequest() {
-        // Arrange
         GwRequests gwRequest = new GwRequests();
         gwRequest.setId(UUID.randomUUID());
         gwRequest.setStatus("New");
 
-        // Act
         b2cService.processB2CRequest(gwRequest);
 
-        // Assert
         assertEquals("Pending", gwRequest.getStatus());
         verify(gwRequestRepository, times(1)).save(gwRequest);
         verify(kafkaTemplate, times(1)).send(eq("b2c-requests"), eq(gwRequest.getId().toString()), anyString());
@@ -50,17 +47,16 @@ class B2CServiceTest {
 
     @Test
     void fetchPaymentStatus() {
-        // Arrange
+
         UUID id = UUID.randomUUID();
         GwRequests gwRequest = new GwRequests();
         gwRequest.setId(id);
         gwRequest.setStatus("Completed");
         when(gwRequestRepository.findById(id)).thenReturn(Optional.of(gwRequest));
 
-        // Act
+
         Result result = b2cService.fetchPaymentStatus(id);
 
-        // Assert
         assertNotNull(result);
         assertEquals(id, result.getId());
         assertEquals("Completed", result.getStatus());
@@ -69,7 +65,6 @@ class B2CServiceTest {
 
     @Test
     void updatePaymentStatus() {
-        // Arrange
         UUID id = UUID.randomUUID();
         Result result = new Result();
         result.setId(id);
@@ -80,10 +75,8 @@ class B2CServiceTest {
         gwRequest.setStatus("Pending");
         when(gwRequestRepository.findById(id)).thenReturn(Optional.of(gwRequest));
 
-        // Act
         b2cService.updatePaymentStatus(result);
 
-        // Assert
         assertEquals("Completed", gwRequest.getStatus());
         verify(gwRequestRepository, times(1)).findById(id);
         verify(gwRequestRepository, times(1)).save(gwRequest);
