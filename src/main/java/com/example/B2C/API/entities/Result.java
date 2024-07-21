@@ -1,7 +1,6 @@
 package com.example.B2C.API.entities;
 
 import lombok.Data;
-
 import java.util.UUID;
 
 @Data
