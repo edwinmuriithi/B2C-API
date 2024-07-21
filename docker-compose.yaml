@@ -24,7 +24,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: develop
       MONGO_INITDB_ROOT_PASSWORD: Password123
 
-  daraja-api:
+  b2c-api:
     build: .
     ports:
       - "8081:8081"
