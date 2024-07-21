@@ -3,10 +3,12 @@
 ## Prerequisites
 - Java 17
 - Maven
+- ZooKeeper
+- Kafka
+- MongoDB
 - Docker
 - Docker Compose
-- Apache Kafka
-- MongoDB
+
 
 > The above pre-requisites should all be installed before cloning the repository
 
@@ -15,6 +17,14 @@
 ```bash
    git clone <repository-url>
    cd <repository-directory>
+```
+2. Ensure you have Kafka running. For that you also need to start 'ZooKeeper' using the command while in the directory you installed them.
+```bash
+   bin/zookeeper-server-start.sh config/zookeeper.properties
+```
+3. And next you can start up Kafka using the command below:
+```bash
+   bin/kafka-server-start.sh config/server.properties
 ```
 - Open using your preferred IDE and update the application.yml with your correct credentials for MongoDB in order to run.
 2. Next go to the terminal run the command below in order to run tests, and package the application into a JAR file.
