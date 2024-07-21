@@ -9,7 +9,7 @@ spring:
       uri: mongodb://localhost:27017/daraja
       username: develop
       password: Password123
-      database: hrms_sample_db
+
 
 kafka:
   bootstrap-servers: localhost:9092
