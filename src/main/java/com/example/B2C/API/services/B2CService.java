@@ -25,4 +25,12 @@ public class B2CService {
 
         kafkaTemplate.send("b2c-requests", gwRequest.getId().toString(), gwRequest.toString());
     }
+
+    public Result fetchPaymentStatus(UUID id) {
+        GwRequests gwRequest = gwRequestRepository.findById(id).orElseThrow();
+        Result result = new Result();
+        result.setId(gwRequest.getId());
+        result.setStatus(gwRequest.getStatus());
+        return result;
+    }
 }
