@@ -2,10 +2,13 @@
 
 ## Prerequisites
 - Java 17
+- Maven
 - Docker
 - Docker Compose
 - Apache Kafka
 - MongoDB
+
+> The above pre-requisites should all be installed before cloning the repository
 
 ## Setup
 1. Clone the repository.
@@ -13,11 +16,16 @@
    git clone <repository-url>
    cd <repository-directory>
 ```
-2. Run the Docker Compose command:
+- Open using your preferred IDE and update the application.yml with your correct credentials for MongoDB in order to run.
+2. Next go to the terminal run the command below in order to run tests, and package the application into a JAR file.
 ```bash
-   docker-compose up
+   mvn clean install
 ```
-Once the Docker services are up and running, you can begin testing the endpoints.
+3. In order to the application use the command below:
+```bash
+   mvn spring-boot:run
+```
+Once the application is are up and running, you can begin testing the endpoints.
 
 ## API Endpoints
 ## Receive B2C Request
