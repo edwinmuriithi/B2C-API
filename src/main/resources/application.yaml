@@ -6,8 +6,11 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb://develop:Password123@mongodb:27017/daraja
+      uri: mongodb://localhost:27017/daraja
+      username: develop
+      password: Password123
+
 
 kafka:
-  bootstrap-servers: kafka:9092
+  bootstrap-servers: localhost:9092
   group-id: daraja-group
